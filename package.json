@@ -1,0 +1,25 @@
+{
+  "name": "infoifpibot",
+  "version": "1.0.0",
+  "description": "Bot para demandas específicas do grupo de Professores de Informática do IFPI",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlenopires/InfoIFPIBot.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "profsdeinfo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlenopires/InfoIFPIBot/issues"
+  },
+  "homepage": "https://github.com/charlenopires/InfoIFPIBot#readme",
+  "dependencies": {
+    "telegraf": "^4.0.1"
+  }
+}
