@@ -7,6 +7,7 @@ Tipo: cursos / palestras / offtopic / assuntos internos */
 //TODO: Guardar links com categoria no Firebase
 //TODO: Subir para Heroku como cron
 
+var express = require('express')
 const {Telegraf, Markup} = require('telegraf')
 const urlValida = require('valid-url') 
 const bot = new Telegraf('1543897523:AAEh7haKaRAcy1ofLrzCjmJzfIMtk1fvJHM', {username: 'infoifpibot'})
@@ -84,3 +85,14 @@ bot.launch()
 
 process.once('SIGINT', () => bot.stop('SIGINT'))
 process.once('SIGTERM', () => bot.stop('SIGTERM'))
+
+let app = express()
+
+app.get('/', function(request, response) {
+    var result = 'App is running'
+    response.send(result);
+    }).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+})
+
+app.set('port', (process.env.PORT || 5000))
