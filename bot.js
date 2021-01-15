@@ -8,13 +8,25 @@ Tipo: cursos / palestras / offtopic / assuntos internos */
 //TODO: Subir para Heroku como cron
 
 const { Telegraf } = require('telegraf')
+const urlValida = require('valid-url') 
 const bot = new Telegraf('1543897523:AAEh7haKaRAcy1ofLrzCjmJzfIMtk1fvJHM', {username: 'infoifpibot'})
 
 bot.use(Telegraf.log())
 bot.on('message', (ctx, next) => {
-    if(ctx.message) {
-        if(ctx.message.text) {
-            console.log('bot send message: ', ctx.message.text);
+    let msg
+    if(ctx){
+        if(ctx.message) {
+            if(
+                urlValida.isHttpUri(ctx.message.text) ||
+                urlValida.isHttpsUri(ctx.message.text) ||
+                urlValida.isUri(ctx.message.text) ||
+                urlValida.isWebUri(ctx.message.text)
+            ) {
+                msg = 'eh url'
+            }else{
+                msg = 'nao eh url'
+            }
+            console.log(`${ctx.message.text} ${msg}`)
         }
     }
     next()
